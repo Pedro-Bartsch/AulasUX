@@ -135,6 +135,17 @@
     <section id="contato" class="container">
       <p><strong>Contato</strong></p>
       <form>
+
+        <form id="contact-form">
+          <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Seu nome"
+              required
+            />
         <div class="form-group">
           <label for="exampleFormControlInput1">Endereço de email</label>
           <input
@@ -142,13 +153,14 @@
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="nome@exemplo.com"
+            required
           />
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1"
             >Selecione o serviço desejado</label
           >
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="exampleFormControlSelect1" required>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -162,8 +174,15 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            required
           ></textarea>
         </div>
+         <!-- Botão de envio -->
+         <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">
+            Enviar Mensagem
+          </button>
+         </div>
       </form>
     </section>
 
@@ -199,7 +218,22 @@
     </footer>
   </body>
 
-  <!-- Optional JavaScript -->
+
+  <!-- Funções JavaScript -->
+  <script>
+    document
+      .getElementById("contact-form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita recarregar a página
+
+        // Exibe a mensagem de sucesso
+        document.getElementById("success-message").classList.remove("d-none");
+
+        // Limpa os campos do formulário
+        document.getElementById("contact-form").reset();
+      });
+  </script>
+  
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script
     src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
