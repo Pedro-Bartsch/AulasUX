@@ -16,6 +16,20 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <style>
+        .imagem {
+            
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        
+        .imagem:hover {
+            transform: scale(1.1); 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); 
+        }
+    </style>
+
   </head>
   <body>
     <!-- Cabeçalho -->
@@ -104,7 +118,7 @@
         <div class="col-md-4">
           <img
             src="../assets/Imagem-3.png"
-            class="img-fluid rounded-circle px-1  border bg-dark "
+            class="imagem img-fluid rounded-circle px-1  border bg-dark "
             style="max-width: 300px; height: 200px;"
             alt="Imagem 1"
           />
@@ -113,7 +127,7 @@
         <div class="col-md-4">
           <img
             src="../assets/Imagem-3.png"
-            class="img-fluid rounded-circle px-1 border bg-dark"
+            class="imagem img-fluid rounded-circle px-1 border bg-dark"
             style="max-width: 300px; height: 200px;"
             alt="Imagem 2"
           />
@@ -122,7 +136,7 @@
         <div class="col-md-4">
           <img
             src="../assets/Imagem-3.png"
-            class="img-fluid rounded-circle px-1 border bg-dark " 
+            class="imagem img-fluid rounded-circle px-1 border bg-dark " 
             style="max-width: 300px; height: 200px;"
             alt="Imagem 3"
           />
@@ -161,6 +175,7 @@
             >Selecione o serviço desejado</label
           >
           <select class="form-control" id="exampleFormControlSelect1" required>
+            <option value="" disabled selected>Escolha uma opção</option>
             <option>1</option>
             <option>2</option>
             <option>3</option>
