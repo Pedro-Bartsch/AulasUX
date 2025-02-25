@@ -16,35 +16,35 @@
   </head>
   <body class="bg-light">
     <div class="container mt-5">
-      <h2 class="text-center mb-4">🔍 Buscar Usuário</h2>
+      <h2 class="text-center mb-4">🔍 Buscar Usuário(s)</h2>
 
       <!-- Campo de entrada e botão -->
       <div class="input-group mb-3">
         <input
           type="text"
-          id="userIds"
+          id="userID"
           class="form-control"
-          placeholder="Digite os IDs dos usuários (1 a 10, separados por vírgula)"
+          placeholder="Digite o(s) ID(s) do usuário (1 a 10, separados por vírgula)"
         />
         <button id="searchButton" class="btn btn-primary">Buscar</button>
         <button id="cleanButton" class="btn btn-dark">Limpar</button>
       </div>
 
       <!-- Área para exibir os resultados -->
-      <div id="userInfo" class="mt-4">
-        <div class="spinner spinner-border" role="status">
-          <span class="visually-hidden">Carregando...</span>
-        </div>
-      </div>
+      <div id="userInfo" class="mt-4"></div>
     </div>
 
     <script>
       document
         .getElementById("searchButton")
         .addEventListener("click", function () {
-          let userIds = document.getElementById("userIds").value;
-          let idsArray = userIds.split(",").map((id) => id.trim());
+          let userIDs = document.getElementById("userID").value;
+          userIDs = userIDs.split(",").map((id) => id.trim()); // separar IDs por vírgula
 
+          const userInfoContainer = document.getElementById("userInfo");
+          userInfoContainer.innerHTML = ""; // Limpar resultados anteriores
+
+          // Exibir o spinner enquanto carrega
           const spinner = document.createElement("div");
           spinner.classList.add("spinner-border", "text-primary");
           spinner.setAttribute("role", "status");
@@ -52,39 +52,59 @@
           spinnerText.classList.add("visually-hidden");
           spinnerText.textContent = "Carregando...";
           spinner.appendChild(spinnerText);
-          document.getElementById("userinfo").innerHTML = "";
-          document.getElementById("userinfo").appendChild(spinner);
+          userInfoContainer.appendChild(spinner);
 
-          // TODO: Completar a requisição AJAX usando fetch()
-          fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-            .then((response) => response.json())
-            .then((user) => {
-              // TODO: Exibir os dados do usuário no HTML
-              document.getElementById("userInfo").innerHTML = `
-                <div class="card">
-                    <div class="card-body">
+          // Criar a promessa para cada ID de usuário
+          const promises = userIDs.map((userId) =>
+            fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`Usuário ${userId} não encontrado`);
+                }
+                return response.json();
+              })
+              .catch((error) => ({ error: error.message }))
+          );
+
+          // Aguardar todas as requisições e mostrar os resultados
+          Promise.all(promises)
+            .then((users) => {
+              userInfoContainer.innerHTML = ""; // Limpar o spinner
+              users.forEach((user) => {
+                if (user.error) {
+                  userInfoContainer.innerHTML += `
+                    <div class="alert alert-danger">Erro: ${user.error}</div>
+                  `;
+                } else {
+                  userInfoContainer.innerHTML += `
+                    <div class="card mb-3">
+                      <div class="card-body">
                         <h5 class="card-title">${user.name}</h5>
-                                <p class="card-text"><strong>Email:</strong> ${user.email}</p>
-                                <p class="card-text"><strong>Telefone:</strong> ${user.phone}</p>
-                                <p class="card-text"><strong>Empresa:</strong> ${user.company.name}</p>
-                            </div>
-                        </div>
-                    `;
+                        <p class="card-text"><strong>Email:</strong> ${user.email}</p>
+                        <p class="card-text"><strong>Telefone:</strong> ${user.phone}</p>
+                        <p class="card-text"><strong>Empresa:</strong> ${user.company.name}</p>
+                      </div>
+                    </div>
+                  `;
+                }
+              });
             })
             .catch((error) => {
-              // TODO: Exibir mensagem de erro amigável
-              document.getElementById("userInfo").innerHTML = `
-                        <div class="alert alert-danger">Usuário não encontrado!</div>
-                    `;
+              userInfoContainer.innerHTML = `
+                <div class="alert alert-danger">Erro ao buscar os usuários!</div>
+              `;
+            })
+            .finally(() => {
+              // Remover o spinner após a execução, tanto em caso de sucesso quanto erro
+              spinner.remove();
             });
         });
 
       // Limpeza de dados
-
       document
         .getElementById("cleanButton")
         .addEventListener("click", function () {
-          document.getElementById("userIds").value = "";
+          document.getElementById("userID").value = "";
           document.getElementById("userInfo").innerHTML = "";
         });
     </script>
