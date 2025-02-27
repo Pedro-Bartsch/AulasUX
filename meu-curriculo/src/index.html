@@ -11,14 +11,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
   </head>
   <body>
     <!-- Navbar -->
@@ -27,8 +30,8 @@
 
       <div class="profile-img">
         <img
-          src="assets/img/my-profile-img.jpg"
-          alt=""
+          src="../assets/img/Imagem-4.png"
+          alt="Imagem de Pedro Bartsch"
           class="img-fluid rounded-circle"
         />
       </div>
@@ -39,15 +42,14 @@
       >
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Alex Smith</h1>
+        <h1 class="sitename">Pedro Bartsch</h1>
       </a>
 
       <div class="social-links text-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/Pedro-Bartsch" class="menu__icon"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="#" class="menu__icon"><i class="fa-brands fa-linkedin"></i></a>
       </div>
 
       <nav id="navmenu" class="navmenu">
@@ -58,11 +60,12 @@
             >
           </li>
           <li>
-            <a href="#about"><i class="bi bi-person navicon"></i> About</a>
+            <a href="#sobre"><i class="bi bi-person navicon"></i> Sobre Mim</a>
           </li>
           <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i> Resume</a
+            <a href="#experiencia"
+              ><i class="bi bi-fie-earmark-text navicon"></i> Experiência
+              Profissional</a
             >
           </li>
           <li>
@@ -71,13 +74,14 @@
             >
           </li>
           <li>
-            <a href="#services"
-              ><i class="bi bi-hdd-stack navicon"></i> Services</a
+            <a href="#servicos"
+              ><i class="bi bi-hdd-stack navicon"></i> Serviços</a
             >
           </li>
           <li class="dropdown">
             <a href="#"
-              ><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span>
+              ><i class="bi bi-menu-button navicon"></i>
+              <span>Voltar ao início</span>
               <i class="bi bi-chevron-down toggle-dropdown"></i
             ></a>
             <ul>
@@ -101,8 +105,8 @@
             </ul>
           </li>
           <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i> Contact</a
+            <a href="#contato"
+              ><i class="bi bi-envelope navicon"></i> Contato</a
             >
           </li>
         </ul>
@@ -117,22 +121,11 @@
         class=""
       />
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Alex Smith</h2>
+      <div class="container">
+        <h2>Pedro Bartsch</h2>
         <p>
-          I'm
-          <span
-            class="typed"
-            data-typed-items="Designer, Developer, Freelancer, Photographer"
-            >Designer</span
-          ><span
-            class="typed-cursor typed-cursor--blink"
-            aria-hidden="true"
-          ></span
-          ><span
-            class="typed-cursor typed-cursor--blink"
-            aria-hidden="true"
-          ></span>
+          Sou
+          <span>Programador</span>
         </p>
       </div>
     </section>
@@ -164,43 +157,106 @@
       </div>
     </section>
 
+    <!-- Portfólio -->
+
+    <section class="content-section" id="portfolio">
+      <div class="container px-4 px-lg-5">
+        <div class="content-section-heading text-center">
+          <h3 class="text-secondary mb-0">Portfólio</h3>
+          <h2 class="mb-5">Projetos Recentes</h2>
+        </div>
+        <div class="row gx-0">
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#!">
+              <div class="caption">
+                <div class="caption-content">
+                  <div class="h2">Stationary</div>
+                  <p class="mb-0">
+                    A yellow pencil with envelopes on a clean, blue backdrop!
+                  </p>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="../assets/img/Imagem-4.png"
+                alt="..."
+              />
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#!">
+              <div class="caption">
+                <div class="caption-content">
+                  <div class="h2">Ice Cream</div>
+                  <p class="mb-0">
+                    A dark blue background with a colored pencil, a clip, and a
+                    tiny ice cream cone!
+                  </p>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="../assets/img/Imagem-4.png"
+                alt="..."
+              />
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#!">
+              <div class="caption">
+                <div class="caption-content">
+                  <div class="h2">Strawberries</div>
+                  <p class="mb-0">
+                    Strawberries are such a tasty snack, especially with a
+                    little sugar on top!
+                  </p>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="../assets/img/Imagem-4.png"
+                alt="..."
+              />
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#!">
+              <div class="caption">
+                <div class="caption-content">
+                  <div class="h2">Workspace</div>
+                  <p class="mb-0">
+                    A yellow workspace with some scissors, pencils, and other
+                    objects.
+                  </p>
+                </div>
+              </div>
+              <img
+                class="img-fluid"
+                src="../assets/img/Imagem-4.png"
+                alt="..."
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Adicione outras seções aqui -->
 
     <!-- Rodapé -->
     <footer class="footer text-center">
       <div class="container">
         <div class="row">
-          <!-- Footer Location-->
           <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Location</h4>
-            <p class="lead mb-0">
-              2215 John Daniel Drive
-              <br />
-              Clark, MO 65243
-            </p>
-          </div>
-          <!-- Footer Social Icons-->
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Around the Web</h4>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-            <a class="btn btn-outline-light btn-social mx-1" href="#!"
-              ><i class="fab fa-fw fa-twitter"></i
+            <h4 class="text-uppercase text-light mb-4">Meus contatos</h4>
+            <a
+              class="btn btn-outline-light btn-social mx-1"
+              href="https://github.com/Pedro-Bartsch"
+              ><i class="fab fa-fw fa-github"></i
             ></a>
             <a class="btn btn-outline-light btn-social mx-1" href="#!"
               ><i class="fab fa-fw fa-linkedin-in"></i
             ></a>
-          </div>
-          <!-- Footer About Text-->
-          <div class="col-lg-4">
-            <h4 class="text-uppercase mb-4">About Freelancer</h4>
-            <p class="lead mb-0">
-              Freelance is a free to use, MIT licensed Bootstrap theme created
-              by
-              <a href="http://startbootstrap.com">Start Bootstrap</a>
-              .
-            </p>
           </div>
         </div>
       </div>
