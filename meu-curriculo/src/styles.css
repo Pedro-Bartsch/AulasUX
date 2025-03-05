@@ -175,7 +175,7 @@ h6 {
 
 .header .header-toggle {
   color: var(--contrast-color);
-  background-color: var(--accent-color);
+  background-color: black;
   font-size: 22px;
   display: flex;
   align-items: center;
@@ -311,6 +311,55 @@ h6 {
   background-color: rgba(33, 37, 41, 0.03);
 }
 
+body {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.navmenu.open ~ body {
+  margin-left: 250px; /* Dê a largura do menu quando estiver aberto */
+}
+
+.menu-toggle {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Botão de minimizar (aparece apenas em dispositivos móveis) */
+.menu-toggle-minimize {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: -40px; /* Botão minimizado do lado direito */
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mostrar o botão de minimizar apenas quando o menu estiver aberto (em dispositivos móveis) */
+.navmenu.open .menu-toggle-minimize {
+  display: block;
+}
+
+/* Responsividade: em dispositivos móveis (exemplo: até 991px) */
+@media (max-width: 991px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle-minimize {
+    display: block;
+  }
+}
+
 /*--------------------------------------------------------------
 Portfólio
 --------------------------------------------------------------*/
@@ -318,66 +367,75 @@ Portfólio
   display: block;
   position: relative;
   overflow: hidden;
-  max-width: 530px;
-  margin: auto auto 1rem;
+  margin: 0; /* Sem margens diretamente no item */
 }
+
 .portfolio-item .caption {
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: rgba(33, 37, 41, 0.2);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
+  background-color: rgba(228, 228, 228, 0.2);
+  position: relative;
+  z-index: 3;
 }
-.portfolio-item .caption .caption-content {
-  color: #fff;
-  margin: auto 2rem 2rem;
+
+/* Conteúdo do item de portfólio */
+.portfolio-item .caption-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
-.portfolio-item .caption .caption-content h2,
-.portfolio-item .caption .caption-content .h2 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
+
+.portfolio-item .caption-content .portfolio-item-img {
+  width: 45%; /* Imagem ocupa 45% da largura */
+  height: auto;
 }
-.portfolio-item .caption .caption-content p {
+
+.portfolio-item .caption-content .portfolio-item-img img {
+  width: 100%;
+  height: auto;
+}
+
+.portfolio-item .caption-content .portfolio-item-text {
+  width: 50%; /* Descrição ocupa 50% da largura */
+  color: black;
+  padding-left: 1rem;
+}
+
+.portfolio-item .caption-content h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.portfolio-item .caption-content p {
+  font-size: 1rem;
   font-weight: 300;
-  font-size: 1.2rem;
 }
-@media (min-width: 992px) {
-  .portfolio-item {
-    max-width: none;
-    margin: 0;
+
+/* Efeito de hover */
+.portfolio-item:hover .caption {
+  background-color: rgba(154, 204, 204, 0.9);
+}
+
+/* Responsividade para telas menores que 992px */
+@media (max-width: 992px) {
+  .portfolio-item .caption-content {
+    flex-direction: column;
+    text-align: center;
   }
-  .portfolio-item .caption {
-    transition: background-color 0.7s, -webkit-clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out, background-color 0.7s;
-    transition: clip-path 0.25s ease-out, background-color 0.7s,
-      -webkit-clip-path 0.25s ease-out;
-    -webkit-clip-path: inset(0px);
-    clip-path: inset(0px);
+
+  .portfolio-item .caption-content .portfolio-item-img {
+    width: 100%; /* Imagem ocupa 100% da largura */
+    margin-bottom: 1rem; /* Adiciona um espaçamento inferior entre a imagem e o texto */
   }
-  .portfolio-item .caption .caption-content {
-    transition: opacity 0.25s;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-bottom: 5rem;
-  }
-  .portfolio-item img {
-    transition: -webkit-clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out;
-    transition: clip-path 0.25s ease-out, -webkit-clip-path 0.25s ease-out;
-    -webkit-clip-path: inset(-1px);
-    clip-path: inset(-1px);
-  }
-  .portfolio-item:hover img {
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
-  }
-  .portfolio-item:hover .caption {
-    background-color: rgba(28, 184, 106, 0.9);
-    -webkit-clip-path: inset(2rem);
-    clip-path: inset(2rem);
+
+  .portfolio-item .caption-content .portfolio-item-text {
+    width: 100%; /* Texto ocupa 100% da largura */
   }
 }
 
@@ -388,6 +446,66 @@ Portfólio
   padding-top: 5rem;
   background-color: #374d63;
   color: #fff;
+}
+
+.footer .container {
+  justify-content: center; /* Centraliza o conteúdo */
+  text-align: center;
+}
+
+.footer .row {
+  display: flex;
+  justify-content: center; /* Garante que os itens da linha fiquem centralizados */
+}
+
+.footer .col-lg-4 {
+  text-align: center; /* Garante o texto centralizado dentro da coluna */
+}
+
+.footer h4 {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  white-space: nowrap; /* Impede que o texto "Meus contatos" quebre para a linha de baixo */
+}
+
+.footer .social-buttons {
+  display: flex; /* Usando flexbox para organizar os botões lado a lado */
+  justify-content: center; /* Centraliza os botões */
+  align-items: center; /* Alinha os botões verticalmente */
+  flex-wrap: wrap; /* Permite que os botões se ajustem em telas pequenas */
+}
+
+.footer .btn-social {
+  margin: 0.5rem; /* Adiciona um espaço entre os botões */
+  display: inline-block; /* Garante que os botões fiquem na mesma linha */
+  vertical-align: middle; /* Alinha os botões verticalmente no centro */
+  min-width: 50px; /* Define uma largura mínima para os botões */
+  min-height: 40px; /* Define uma altura mínima para os botões */
+  padding: 8px; /* Ajuste de padding para os botões */
+}
+
+@media (max-width: 768px) {
+  .footer .col-lg-4 {
+    text-align: center; /* Alinha o texto no centro para telas pequenas */
+  }
+
+  /* Garante que os botões fiquem centralizados e lado a lado em telas pequenas */
+  .footer .social-buttons {
+    justify-content: center; /* Centraliza os botões */
+    gap: 10px; /* Espaço entre os botões */
+  }
+
+  .footer .btn-social {
+    margin: 0.25rem; /* Reduz a margem entre os botões em telas pequenas */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer h4 {
+    font-size: 1rem; /* Reduz o tamanho da fonte em telas muito pequenas */
+  }
 }
 
 .copyright {
@@ -525,6 +643,11 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: linear-gradient(
+    to bottom,
+    var(--green-900),
+    var(--green-1000)
+  );
 }
 
 .hero img {
