@@ -176,7 +176,7 @@ h6 {
 .header .header-toggle {
   color: var(--contrast-color);
   background-color: black;
-  font-size: 22px;
+  font-size: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -358,6 +358,17 @@ body {
   .menu-toggle-minimize {
     display: block;
   }
+}
+
+/*--------------------------------------------------------------
+Sobre Mim
+--------------------------------------------------------------*/
+.imagem--sobremim img {
+  margin: 10px auto;
+  display: block;
+  width: 10px;
+
+  border: 8px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 /*--------------------------------------------------------------
@@ -643,10 +654,12 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(
-    to bottom,
-    var(--green-900),
-    var(--green-1000)
+  background: rgb(194, 66, 129);
+  background: linear-gradient(
+    90deg,
+    rgba(194, 66, 129, 1) 20%,
+    rgba(247, 169, 23, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
   );
 }
 
